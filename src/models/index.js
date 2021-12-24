@@ -1,6 +1,6 @@
-const User = require("./Users");
-const Blog = require("./Blogs");
-const Comment = require("./Comments");
+const User = require("./User");
+const Blog = require("./Blog");
+const Comment = require("./Comment");
 
 // User hasMany Blogs
 // Blog belongsTo User
@@ -31,3 +31,9 @@ Comment.belongsTo(User, {
     foreignKey: "userId",
     onDelete: "CASCADE",
 });
+
+module.exports = {
+    User,
+    Blog,
+    Comment,
+};
