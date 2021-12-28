@@ -22,7 +22,7 @@ const schema = {
             key: "id",
         },
     },
-    userID: {
+    userId: {
         type: DataTypes.INTEGER,
         refernces: {
             model: "user",
