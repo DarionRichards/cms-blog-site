@@ -5,9 +5,7 @@ const express = require("express");
 const PORT = process.env.PORT || 4000;
 
 const connection = require("./config/connection");
-
 const routes = require("./routes");
-
 const app = express();
 
 app.use(express.json());
@@ -19,7 +17,7 @@ const init = async() => {
         await connection.sync({ force: false });
 
         app.listen(PORT, () =>
-            console.log(`🚀🚀 Server running on http://localhost:${PORT}`)
+            console.log(`🚀🚀 Server running on http://localhost:${PORT} 🚀🚀`)
         );
     } catch (err) {
         console.log(`[ERROR]: Connection to DB failes - ${err.message}`);
