@@ -107,7 +107,7 @@ input {
 }
 
 
-/* Form Styles */
+/* Form Styles - Login & Signup */
 
 .form {
     display: flex;
@@ -150,7 +150,8 @@ input {
     border-radius: 0.3rem;
 }
 
-.form-button {
+.form-button,
+.create-button {
     cursor: pointer;
     height: 2.5rem;
     border-radius: 0.3rem;
@@ -158,8 +159,34 @@ input {
     background: var(--clr-hover);
 }
 
-.form-button:hover {
+.form-button:hover,
+.create-button:hover {
     background: var(--clr-form-hover);
+}
+
+
+/* Create-blog Styles */
+
+.create-new-blog-title {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.create-content {
+    padding: 0.5rem;
+    resize: none;
+    width: 100%;
+}
+
+.content-spacing h3 {
+    padding-bottom: 1rem;
 }
 
 @media all and (max-width: 768px) {
