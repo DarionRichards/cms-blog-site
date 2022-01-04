@@ -1,13 +1,20 @@
 require("dotenv").config();
-
 const express = require("express");
+const expressHandlebars = require("express-handlebars");
+const path = require("path");
 
 const PORT = process.env.PORT || 4000;
 
-const connection = require("./config/connection");
-const routes = require("./routes");
+const handlebars = expressHandlebars.create({});
 const app = express();
 
+const connection = require("./config/connection");
+const routes = require("./routes");
+
+app.engine("handlebars", handlebars.engine);
+app.set("view engine", "handlebars");
+
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);

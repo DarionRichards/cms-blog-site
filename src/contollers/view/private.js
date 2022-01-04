@@ -1,17 +1,17 @@
 const renderDashboard = (req, res) => {
-    res.send("Dashboard");
+    res.render("dashboard");
 };
 
 const renderBlog = (req, res) => {
-    res.send("Blog by ID");
+    res.render("blogs");
 };
 
 const createBlog = (req, res) => {
-    res.send("Create a blog");
+    res.render("createBlog");
 };
 
 const editBlogById = (req, res) => {
-    res.send("Edit a blog by ID");
+    res.render("editBlog");
 };
 
 module.exports = {

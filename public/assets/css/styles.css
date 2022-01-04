@@ -1,0 +1,37 @@
+:root {
+    --clr-background: #f1faee;
+    --clr-navigation-bar: #2b2d42;
+    --clr-navigation-btn: #edf2f4;
+    --clr-hover: #ef233c;
+}
+
+body {
+    background-color: var(--clr-background);
+}
+
+
+/* Navigation Bar Styles */
+
+.navigation-bar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: var(--clr-navigation-bar);
+    color: var(--clr-navigation-btn);
+}
+
+.navigation-buttons {
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding: 1.5rem;
+}
+
+.nav-btn:hover {
+    transition: all 0.5s ease-out;
+    color: var(--clr-hover);
+}
+
+.btn-spacing {
+    margin-left: 1.5rem;
+}

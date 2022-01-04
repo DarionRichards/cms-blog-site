@@ -1,11 +1,11 @@
 const renderHomepage = (req, res) => {
-    res.send("Homepage");
+    res.render("home");
 };
 const renderLoginPage = (req, res) => {
-    res.send("Login Page");
+    res.render("login");
 };
 const renderSignupPage = (req, res) => {
-    res.send("Signup Page");
+    res.render("signup");
 };
 
 module.exports = { renderHomepage, renderLoginPage, renderSignupPage };

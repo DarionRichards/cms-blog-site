@@ -11,8 +11,7 @@ const {
 
 router.get("/dashboard", renderDashboard);
 router.get("/blogs/:id", renderBlog);
-
-router.post("/create-blog", createBlog);
-router.post("/edit-blog/:id", editBlogById);
+router.get("/create-blog", createBlog);
+router.get("/edit-blog/:id", editBlogById);
 
 module.exports = router;
