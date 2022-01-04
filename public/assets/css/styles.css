@@ -119,14 +119,35 @@ input {
     gap: 1rem;
 }
 
-.form .input-control input[type="email"] {
+.form .login-control input[type="email"],
+.signup-password {
     border-top-right-radius: 0.3rem;
     border-top-left-radius: 0.3rem;
 }
 
-.form .input-control input[type="password"] {
+.form .login-control input[type="password"],
+.signup-confirm {
     border-bottom-left-radius: 0.3rem;
     border-bottom-right-radius: 0.3rem;
+}
+
+.signup-name-control {
+    display: flex;
+    flex-direction: row;
+}
+
+.first-name {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+
+.last-name {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.form .signup-control input[type="email"] {
+    border-radius: 0.3rem;
 }
 
 .form-button {
