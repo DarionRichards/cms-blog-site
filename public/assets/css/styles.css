@@ -1,10 +1,11 @@
 :root {
-    --clr-background: #8d99ae;
+    --clr-background: #c2d0e9;
     --clr-navigation-bar: #2b2d42;
     --clr-navigation-btn: #edf2f4;
-    --clr-blog-background: #edf2f4;
+    --clr-blog-background: #ffffff;
     --clr-border: #8d99ae;
     --clr-hover: #ef233c;
+    --clr-form-hover: #d00023;
 }
 
 
@@ -27,6 +28,13 @@ h6 {
     color: gray;
     font-style: italic;
     font-size: 0.8rem;
+}
+
+input {
+    padding: 0.5rem;
+    height: 3rem;
+    border: 1px solid #ced4da;
+    width: 100%;
 }
 
 .content-wrapper {
@@ -96,6 +104,41 @@ h6 {
 .link-styling:hover {
     transition: all 0.3s ease-out;
     color: var(--clr-hover);
+}
+
+
+/* Form Styles */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    padding: 3rem;
+    text-align: center;
+    gap: 1rem;
+}
+
+.form .input-control input[type="email"] {
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+}
+
+.form .input-control input[type="password"] {
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.form-button {
+    cursor: pointer;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    color: var(--clr-navigation-btn);
+    background: var(--clr-hover);
+}
+
+.form-button:hover {
+    background: var(--clr-form-hover);
 }
 
 @media all and (max-width: 768px) {
