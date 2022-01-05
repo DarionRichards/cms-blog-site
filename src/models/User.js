@@ -2,6 +2,8 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
 
+const hashPassword = require("../hooks/hashPassword");
+
 class User extends Model {}
 
 const schema = {
@@ -11,7 +13,15 @@ const schema = {
         allowNull: false,
         autoIncrement: true,
     },
-    username: {
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -27,6 +37,9 @@ const options = {
     freezeTableName: true,
     underscored: true,
     modelName: "user",
+    hooks: {
+        beforeCreate: hashPassword,
+    },
 };
 
 User.init(schema, options);
