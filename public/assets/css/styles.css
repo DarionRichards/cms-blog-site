@@ -4,6 +4,7 @@
     --clr-navigation-btn: #edf2f4;
     --clr-dashboard-hero: #424463;
     --clr-blog-background: #ffffff;
+    --clr-comment-background: #c6e2e9;
     --clr-border: #8d99ae;
     --clr-hover: #ef233c;
     --clr-form-hover: #d00023;
@@ -209,7 +210,8 @@ input {
     font-size: 1.5rem;
 }
 
-.dashboard-blog-links {
+.dashboard-blog-links,
+.view-blog-links {
     width: 100%;
     text-decoration: none;
     text-align: right;
@@ -218,6 +220,29 @@ input {
 .delete-button {
     height: unset;
     padding: 0.6rem;
+}
+
+
+/* Viewing blogs/comments */
+
+.blog-comments-wrapper {
+    gap: 0;
+}
+
+.comment-section {
+    padding: 1rem;
+    border-top: 1px solid var(--clr-border);
+    background-color: var(--clr-blog-background);
+}
+
+.comment {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: var(--clr-comment-background);
+}
+
+.comment-content {
+    padding: 1rem;
 }
 
 @media all and (max-width: 768px) {
