@@ -5,7 +5,7 @@ const { User } = require("../../models");
 const login = (req, res) => {
     res.send("login");
 };
-const signup = (req, res) => {
+const signup = async(req, res) => {
     try {
         const payload = getPayloadWithValidFieldsOnly(
             ["firstName", "lastName", "email", "password"],
@@ -19,7 +19,7 @@ const signup = (req, res) => {
             });
         }
 
-        const user = User.create(payload);
+        const user = await User.create(payload);
 
         return res.status(200).json({
             success: true,
