@@ -1,20 +1,36 @@
 <main>
 	<section class="content-wrapper">
-		<form class="form">
+		<form id="signup-form" class="form">
 			<h2>Sign Up</h2>
 
 			<section class="signup-name-control">
-				<input class="first-name" type="text" placeholder="First Name" />
-				<input class="last-name" type="text" placeholder="Last Name" />
-			</section>
-
-			<section class="signup-control">
-				<input type="email" placeholder="Email Address" />
-			</section>
-
-			<section class="signup-control">
-				<input class="signup-password" type="password" placeholder="Password" />
 				<input
+					id="first-name-input"
+					class="first-name"
+					type="text"
+					placeholder="First Name"
+				/>
+				<input
+					id="last-name-input"
+					class="last-name"
+					type="text"
+					placeholder="Last Name"
+				/>
+			</section>
+
+			<section class="signup-control">
+				<input id="email-input" type="email" placeholder="Email Address" />
+			</section>
+
+			<section class="signup-control">
+				<input
+					id="password-input"
+					class="signup-password"
+					type="password"
+					placeholder="Password"
+				/>
+				<input
+					id="confirm-password-input"
 					class="signup-confirm"
 					type="password"
 					placeholder="Confrim Password"

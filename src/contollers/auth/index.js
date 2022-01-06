@@ -64,6 +64,19 @@ const signup = async(req, res) => {
             });
         }
 
+        const userEmailExists = await User.findOne({
+            where: {
+                email: payload.email,
+            },
+        });
+
+        if (userEmailExists) {
+            return res.status(409).json({
+                success: false,
+                error: "User email already exists",
+            });
+        }
+
         const user = await User.create(payload);
 
         return res.status(200).json({
