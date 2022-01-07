@@ -38,9 +38,20 @@ const login = async(req, res) => {
             });
         }
 
-        return res.status(200).json({
-            success: true,
-            data: "Login Successful",
+        const userInSession = {
+            id: user.get("id"),
+            email: user.get("email"),
+            fullName: `${user.get("firstName")} ${user.get("lastName")}`,
+        };
+
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.user = userInSession;
+
+            return res.status(200).json({
+                success: true,
+                data: "Login Successful",
+            });
         });
     } catch (err) {
         console.log("[ERROR]: Create user failed");
@@ -77,11 +88,11 @@ const signup = async(req, res) => {
             });
         }
 
-        const user = await User.create(payload);
+        await User.create(payload);
 
         return res.status(200).json({
             success: true,
-            data: user,
+            data: "Successfully created user",
         });
     } catch (err) {
         console.log("[ERROR]: Create user failed");
