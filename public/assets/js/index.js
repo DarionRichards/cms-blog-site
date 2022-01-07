@@ -18,6 +18,10 @@ const handleLoginSubmit = async(event) => {
 
     const data = await response.json();
 
+    if (data.success) {
+        window.location.replace("/dashboard");
+    }
+
     console.log(data);
 };
 
@@ -46,6 +50,10 @@ const handleSignupSubmit = async(event) => {
             });
 
             const data = await response.json();
+
+            if (data.success) {
+                window.location.replace("/login");
+            }
             console.log(data);
         }
     }
