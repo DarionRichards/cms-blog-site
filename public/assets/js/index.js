@@ -1,5 +1,6 @@
 const loginFormElement = $("#login-form");
 const signupFormElement = $("#signup-form");
+const logoutButtonElement = $("#logout-button");
 
 // Handle Login Form
 const handleLoginSubmit = async(event) => {
@@ -59,5 +60,21 @@ const handleSignupSubmit = async(event) => {
     }
 };
 
+const handleLogoutSubmit = async(event) => {
+    const response = await fetch("/auth/logout", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        window.location.replace("/");
+    }
+};
+
 loginFormElement.on("submit", handleLoginSubmit);
 signupFormElement.on("submit", handleSignupSubmit);
+logoutButtonElement.on("click", handleLogoutSubmit);
