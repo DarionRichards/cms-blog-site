@@ -1,3 +1,11 @@
+<header>
+	{{#if loggedIn}}
+  	{{> privateNavbar}}
+  	{{else}}
+  	{{> publicNavbar}}
+ 	{{/if}}
+</header>
+
 <main>
 	<section class="content-wrapper">
 		<section class="blog-card">
