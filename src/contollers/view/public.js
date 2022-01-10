@@ -1,6 +1,10 @@
-const renderHomepage = (req, res) => {
+const { getAllBlogs } = require("../../utils");
+
+const renderHomepage = async(req, res) => {
     const { loggedIn } = req.session;
-    res.render("home", { loggedIn });
+    const blog = await getAllBlogs();
+
+    res.render("home", { loggedIn: loggedIn, blog: blog });
 };
 const renderLoginPage = (req, res) => {
     res.render("login");
