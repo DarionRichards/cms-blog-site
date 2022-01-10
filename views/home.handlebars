@@ -8,6 +8,7 @@
 
 <main>
 	<section class="content-wrapper">
+		{{#if blog}}
 		{{#each blog}}
 		<section class="blog-card">
 			<section class="blog-content">
@@ -36,5 +37,8 @@
 			</section>
 		</section>
 		{{/each}}
+		{{else}}
+		<section class="no-blogs-hero">No blogs posted</section>
+		{{/if}}
 	</section>
 </main>

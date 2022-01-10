@@ -199,7 +199,8 @@ input {
 
 /* Dashboard Styles */
 
-.dashboard-hero {
+.dashboard-hero,
+.no-blogs-hero {
     padding: 2rem 0;
     text-align: center;
     color: var(--clr-navigation-btn);
