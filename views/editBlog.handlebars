@@ -11,19 +11,20 @@
 			<form class="create-form">
 				<div class="content-spacing">
 					<h3>Enter a Blog Title</h3>
-					<input type="text" placeholder="Title" />
+					<input id="blog-title" type="text" placeholder="Title" value="{{blog.title}}" />
 				</div>
 
 				<div class="content-spacing">
 					<h3>Enter Blog's Content</h3>
 					<textarea
+						id="blog-content"
 						class="create-content"
 						type="text"
 						placeholder="Content"
-					></textarea>
+					>{{blog.content}}</textarea>
 				</div>
 
-				<button class="create-button">Update Blog</button>
+				<button id="update-button" class="create-button" data="{{blog.id}}">Update Blog</button>
 			</form>
 		</section>
 	</section>

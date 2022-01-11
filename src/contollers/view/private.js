@@ -1,4 +1,4 @@
-const { getBlogByUserId } = require("../../utils/index");
+const { getBlogByUserId, getBlogById } = require("../../utils/index");
 
 const renderDashboard = async(req, res) => {
     const { id } = req.session.user;
@@ -12,8 +12,12 @@ const createBlog = (req, res) => {
     res.render("createBlog");
 };
 
-const editBlogById = (req, res) => {
-    res.render("editBlog");
+const editBlogById = async(req, res) => {
+    const { id } = req.params;
+
+    const blog = await getBlogById(id);
+
+    res.render("editBlog", { blog });
 };
 
 module.exports = {
