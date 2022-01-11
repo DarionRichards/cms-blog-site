@@ -1,6 +1,7 @@
 const loginFormElement = $("#login-form");
 const signupFormElement = $("#signup-form");
 const logoutButtonElement = $("#logout-button");
+const createButtonElement = $("#create-blog");
 
 // Handle Login Form
 const handleLoginSubmit = async(event) => {
@@ -75,6 +76,37 @@ const handleLogoutSubmit = async(event) => {
     }
 };
 
+const handleCreateBlog = async(event) => {
+    event.preventDefault();
+
+    const blogTitle = $("#blog-title").val();
+    const blogContent = $("#blog-content").val();
+
+    if (!blogTitle) {
+        alert("Title cannot be empty");
+    }
+
+    if (!blogContent) {
+        alert("Content cannot be empty");
+    }
+
+    const response = await fetch("/api/blog", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ blogTitle, blogContent }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        window.location.replace("/dashboard");
+    }
+    console.log(data);
+};
+
 loginFormElement.on("submit", handleLoginSubmit);
 signupFormElement.on("submit", handleSignupSubmit);
 logoutButtonElement.on("click", handleLogoutSubmit);
+createButtonElement.on("click", handleCreateBlog);
