@@ -1,4 +1,11 @@
-const { getAllBlogs } = require("../../utils");
+const {
+    getAllBlogs,
+    getBlogById,
+    findAllRelatedComments,
+    findUserById,
+} = require("../../utils");
+
+const { mergeArrayObjects } = require("../../helpers");
 
 const renderHomepage = async(req, res) => {
     const { loggedIn } = req.session;
@@ -18,9 +25,37 @@ const renderSignupPage = (req, res) => {
     res.render("signup");
 };
 
-const renderBlog = (req, res) => {
+const renderBlog = async(req, res) => {
     const { loggedIn } = req.session;
-    res.render("blogs", { loggedIn });
+    // get blogId
+    const { id } = req.params;
+
+    const blog = await getBlogById(id);
+    const blogAuthor = await findUserById(blog.userId);
+
+    const findComments = await findAllRelatedComments(blog.id);
+
+    const unresolvedAuthors = findComments.map(
+        async(each) => await findUserById(each.userId)
+    );
+    const reslovedAuthors = await Promise.all(unresolvedAuthors);
+
+    const commentsArray = mergeArrayObjects(reslovedAuthors, findComments);
+
+    const comments = commentsArray.map((each) => {
+        return {
+            comment: each.text,
+            author: `${each.firstName} ${each.lastName}`,
+            email: each.email,
+        };
+    });
+
+    res.render("blogs", {
+        loggedIn,
+        blog,
+        blogAuthor,
+        comments,
+    });
 };
 
 module.exports = {

@@ -6,6 +6,11 @@ const commentData = [{
         userId: 1,
     },
     {
+        text: "Awesome Work Mike!",
+        blogId: 1,
+        userId: 6,
+    },
+    {
         text: "Great Work Carl!",
         blogId: 2,
         userId: 2,

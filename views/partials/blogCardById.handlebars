@@ -1,23 +1,20 @@
 <section class="blog-card">
 	<section class="blog-content">
 		<div class="title">
-			<h2>{{this.title}}</h2>
+			<h2>{{blog.title}}</h2>
 		</div>
 		<div class="date">
 			<h6>01/01/2022</h6>
 		</div>
 		<div class="blog-text">
 			<h3>
-				{{this.content}}
+				{{blog.content}}
 			</h3>
 		</div>
-		<div class="blog-link">
-			<a
-				href="/blogs/{{this.id}}"
-				id="blog-read-more"
-				class="link-styling"
-				style="cursor: pointer"
-			>Read More</a>
+		<div class="blog-link view-blog-links">
+			Created by:
+			{{blogAuthor.firstName}}
+			{{blogAuthor.lastName}}
 		</div>
 	</section>
 	<section class="blog-thumbnail">
