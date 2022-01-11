@@ -12,6 +12,14 @@ const getBlogById = async(blogId) =>
         raw: true,
     });
 
+const getBlogByUserId = async(userId) =>
+    await Blog.findAll({
+        where: {
+            userId: userId,
+        },
+        raw: true,
+    });
+
 const findUserById = async(userId) => {
     const user = await User.findByPk(userId, { raw: true });
     return user;
@@ -25,6 +33,7 @@ const findAllRelatedComments = async(blogId) => {
 module.exports = {
     getAllBlogs,
     getBlogById,
+    getBlogByUserId,
     findUserById,
     findAllRelatedComments,
 };

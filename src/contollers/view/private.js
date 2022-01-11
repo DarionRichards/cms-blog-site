@@ -1,5 +1,11 @@
-const renderDashboard = (req, res) => {
-    res.render("dashboard");
+const { getBlogByUserId } = require("../../utils/index");
+
+const renderDashboard = async(req, res) => {
+    const { id } = req.session.user;
+
+    const userCreatedBlogs = await getBlogByUserId(id);
+
+    res.render("dashboard", { userCreatedBlogs });
 };
 
 const createBlog = (req, res) => {
