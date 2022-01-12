@@ -62,4 +62,21 @@ const editBlog = async(req, res) => {
     }
 };
 
-module.exports = { createBlog, editBlog };
+const deleteBlog = async(req, res) => {
+    const { id } = req.params;
+
+    try {
+        await Blog.destroy({ where: { id } });
+
+        return res
+            .status(200)
+            .json({ success: true, data: "Blog successfully deleted" });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: error.message,
+        });
+    }
+};
+
+module.exports = { createBlog, editBlog, deleteBlog };

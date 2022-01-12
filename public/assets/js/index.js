@@ -3,6 +3,7 @@ const signupFormElement = $("#signup-form");
 const logoutButtonElement = $("#logout-button");
 const createButtonElement = $("#create-blog");
 const updateButtonElement = $("#update-button");
+const deleteButtoonElement = $(".delete-button");
 
 // Handle Login Form
 const handleLoginSubmit = async(event) => {
@@ -138,8 +139,28 @@ const handleEditBlog = async(event) => {
     }
 };
 
+const handleDeleteBlog = async(event) => {
+    const blogId = event.target.getAttribute("data");
+
+    const response = await fetch(`/api/blog/${blogId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        window.location.replace("/dashboard");
+    }
+
+    console.log(data);
+};
+
 loginFormElement.on("submit", handleLoginSubmit);
 signupFormElement.on("submit", handleSignupSubmit);
 logoutButtonElement.on("click", handleLogoutSubmit);
 createButtonElement.on("click", handleCreateBlog);
 updateButtonElement.on("click", handleEditBlog);
+deleteButtoonElement.on("click", handleDeleteBlog);
