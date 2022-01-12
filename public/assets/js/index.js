@@ -4,6 +4,7 @@ const logoutButtonElement = $("#logout-button");
 const createButtonElement = $("#create-blog");
 const updateButtonElement = $("#update-button");
 const deleteButtoonElement = $(".delete-button");
+const createCommentButton = $("#create-comment");
 
 // Handle Login Form
 const handleLoginSubmit = async(event) => {
@@ -158,9 +159,39 @@ const handleDeleteBlog = async(event) => {
     console.log(data);
 };
 
+const handleCreateComment = async(event) => {
+    event.preventDefault();
+
+    const comment = $("#comment-text").val();
+    const blogId = event.target.getAttribute("data");
+
+    if (!comment) {
+        alert("Oops!! Cannot post an empty comment!");
+    } else {
+        const response = await fetch(`/api/blog/${blogId}/comment`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                comment,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            window.location.replace(`/blogs/${blogId}`);
+        }
+
+        console.log(data);
+    }
+};
+
 loginFormElement.on("submit", handleLoginSubmit);
 signupFormElement.on("submit", handleSignupSubmit);
 logoutButtonElement.on("click", handleLogoutSubmit);
 createButtonElement.on("click", handleCreateBlog);
 updateButtonElement.on("click", handleEditBlog);
 deleteButtoonElement.on("click", handleDeleteBlog);
+createCommentButton.on("click", handleCreateComment);

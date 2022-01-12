@@ -1,4 +1,4 @@
-const { Blog } = require("../../models");
+const { Blog, Comment } = require("../../models");
 
 const createBlog = async(req, res) => {
     const { id } = req.session.user;
@@ -25,6 +25,36 @@ const createBlog = async(req, res) => {
     } catch (error) {
         return res.status(500).json({
             sucess: false,
+            error: error.message,
+        });
+    }
+};
+
+const createComment = async(req, res) => {
+    const blogId = req.params;
+    const { comment } = req.body;
+    const { user } = req.session;
+
+    try {
+        if (!comment) {
+            return res.status(422).json({
+                success: false,
+                error: "Comment was not a valid string",
+            });
+        }
+        const newComment = await Comment.create({
+            text: comment,
+            blogId: blogId.id,
+            userId: user.id,
+        });
+
+        return res.status(200).json({
+            success: true,
+            data: newComment,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
             error: error.message,
         });
     }
@@ -79,4 +109,4 @@ const deleteBlog = async(req, res) => {
     }
 };
 
-module.exports = { createBlog, editBlog, deleteBlog };
+module.exports = { createBlog, createComment, editBlog, deleteBlog };

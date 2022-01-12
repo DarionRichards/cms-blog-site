@@ -19,5 +19,9 @@
 			<section class="comment">No comments</section>
 			{{/if}}
 		</section>
+		{{#if loggedIn}}
+		{{> addNewComment}}
+		{{else}}
+		{{/if}}
 	</section>
 </main>

@@ -221,7 +221,8 @@ input {
     text-align: right;
 }
 
-.delete-button {
+.delete-button,
+.create-button {
     height: unset;
     padding: 0.6rem;
 }
@@ -239,10 +240,12 @@ input {
     gap: 0;
 }
 
-.comment-section {
+.comment-section,
+.add-new-comment-section {
     padding: 1rem;
     border-top: 1px solid var(--clr-border);
     background-color: var(--clr-blog-background);
+    border-bottom: 1px solid;
 }
 
 .comment {
@@ -253,6 +256,22 @@ input {
 
 .comment-content {
     padding: 1rem;
+}
+
+.comment-border {
+    border-bottom: 1px solid;
+}
+
+.add-new-comment-section {
+    text-align: center;
+    border: unset;
+}
+
+.add-new-comment-text {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid;
+    width: 80%;
 }
 
 @media all and (max-width: 768px) {
