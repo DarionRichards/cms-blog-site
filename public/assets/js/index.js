@@ -99,14 +99,6 @@ const handleCreateBlog = async(event) => {
     const blogTitle = $("#blog-title").val();
     const blogContent = $("#blog-content").val();
 
-    if (!blogTitle) {
-        alert("Title cannot be empty");
-    }
-
-    if (!blogContent) {
-        alert("Content cannot be empty");
-    }
-
     const response = await fetch("/api/blog", {
         method: "POST",
         headers: {
@@ -119,8 +111,9 @@ const handleCreateBlog = async(event) => {
 
     if (data.success) {
         window.location.replace("/dashboard");
+    } else if (data.status === 422) {
+        alert("Blog title or content cannot be empty");
     }
-    console.log(data);
 };
 
 const handleEditBlog = async(event) => {

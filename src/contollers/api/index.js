@@ -8,6 +8,7 @@ const createBlog = async(req, res) => {
         if (!blogTitle || !blogContent) {
             return res.status(422).json({
                 sucess: false,
+                status: 422,
                 error: "Oops! Blog title or content was not a valid string",
             });
         } else {
