@@ -40,26 +40,32 @@ const handleSignupSubmit = async(event) => {
     const password = $("#password-input").val();
     const confirmPassword = $("#confirm-password-input").val();
 
-    if (!firstName || !lastName || !email || !password) {
-        return alert("Missing required fields");
+    if (!firstName) {
+        return alert("Enter first name");
+    } else if (!lastName) {
+        return alert("Enter last name");
+    } else if (!email) {
+        return alert("Enter email");
+    } else if (!password) {
+        return alert("Please enter a password");
+    } else if (password !== confirmPassword) {
+        return alert("Passwords do not match");
     } else {
-        if (password !== confirmPassword) {
-            return alert("Passwords do not match");
-        } else {
-            const response = await fetch("/auth/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ firstName, lastName, email, password }),
-            });
+        const response = await fetch("/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ firstName, lastName, email, password }),
+        });
 
-            const data = await response.json();
+        const data = await response.json();
 
-            if (data.success) {
-                window.location.replace("/login");
-            }
-            console.log(data);
+        if (data.success) {
+            alert("Succesfully created account");
+            window.location.replace("/login");
+        } else if (data.status === 409) {
+            alert("Email already exists. Please enter a different email");
         }
     }
 };

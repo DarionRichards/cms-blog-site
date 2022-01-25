@@ -71,6 +71,7 @@ const signup = async(req, res) => {
         if (Object.keys(payload).length != 4) {
             return res.status(400).json({
                 success: false,
+                status: 400,
                 error: "Please provide valid fields in post body.",
             });
         }
@@ -84,6 +85,7 @@ const signup = async(req, res) => {
         if (userEmailExists) {
             return res.status(409).json({
                 success: false,
+                status: 409,
                 error: "User email already exists",
             });
         }
@@ -98,6 +100,7 @@ const signup = async(req, res) => {
         console.log("[ERROR]: Create user failed");
         return res.status(500).json({
             success: false,
+            status: 500,
             error: err.message,
         });
     }
