@@ -1,5 +1,7 @@
 const { Blog, Comment } = require("../../models");
 
+const moment = require("moment");
+
 const createBlog = async(req, res) => {
     const { id } = req.session.user;
     const { blogTitle, blogContent } = req.body;
@@ -15,6 +17,7 @@ const createBlog = async(req, res) => {
             const newBlog = await Blog.create({
                 title: blogTitle,
                 content: blogContent,
+                date: moment().format("L"),
                 userId: id,
             });
 
