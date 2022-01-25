@@ -13,21 +13,29 @@ const handleLoginSubmit = async(event) => {
     const email = $("#email-input").val();
     const password = $("#password-input").val();
 
-    const response = await fetch("/auth/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-    });
+    if (!email) {
+        alert("Please provide an email");
+    } else if (!password) {
+        alert("Please provide password");
+    } else {
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data.success) {
-        window.location.replace("/dashboard");
+        if (data.success) {
+            window.location.replace("/dashboard");
+        } else if (data.status === 404) {
+            alert("Incorrect email");
+        } else if (data.status === 401) {
+            alert("Incorrect password");
+        }
     }
-
-    console.log(data);
 };
 
 // Handle SignUp Form

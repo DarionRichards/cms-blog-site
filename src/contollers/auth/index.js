@@ -12,6 +12,7 @@ const login = async(req, res) => {
         if (Object.keys(payload).length != 2) {
             return res.status(400).json({
                 success: false,
+                status: 400,
                 error: "Please provide valid fields in post body.",
             });
         }
@@ -25,6 +26,7 @@ const login = async(req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
+                status: 404,
                 error: "User does not exist",
             });
         }
@@ -34,6 +36,7 @@ const login = async(req, res) => {
         if (!validPassword) {
             return res.status(401).json({
                 success: false,
+                status: 401,
                 error: "User not authorized",
             });
         }
