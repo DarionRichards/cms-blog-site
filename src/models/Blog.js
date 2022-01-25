@@ -19,6 +19,7 @@ const schema = {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    date: { type: DataTypes.STRING, allowNull: false },
     userId: {
         type: DataTypes.INTEGER,
         references: {
