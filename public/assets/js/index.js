@@ -156,8 +156,6 @@ const handleDeleteBlog = async(event) => {
     if (data.success) {
         window.location.replace("/dashboard");
     }
-
-    console.log(data);
 };
 
 const handleCreateComment = async(event) => {
