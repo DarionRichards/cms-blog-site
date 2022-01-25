@@ -14,9 +14,9 @@ const renderHomepage = async(req, res) => {
 
     if (blog) {
         return res.render("home", { loggedIn, blog });
+    } else {
+        return res.render("home", { loggedIn });
     }
-
-    return res.render("home", { loggedIn });
 };
 const renderLoginPage = (req, res) => {
     res.render("login");
