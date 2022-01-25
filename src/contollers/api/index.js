@@ -70,22 +70,23 @@ const editBlog = async(req, res) => {
         if (!blogTitle || !blogContent) {
             return res.status(422).json({
                 success: false,
-                error: "Title or content cannot be empty",
+                status: 422,
+                error: "Blog title or content cannot be empty",
             });
+        } else {
+            await Blog.update({
+                title: blogTitle,
+                content: blogContent,
+            }, {
+                where: {
+                    id: id,
+                },
+            });
+
+            return res
+                .status(200)
+                .json({ success: true, data: "Blog updated successfully" });
         }
-
-        await Blog.update({
-            title: blogTitle,
-            content: blogContent,
-        }, {
-            where: {
-                id: id,
-            },
-        });
-
-        return res
-            .status(200)
-            .json({ success: true, data: "Blog updated successfully" });
     } catch (error) {
         return res.status(500).json({
             success: false,

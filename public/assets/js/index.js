@@ -121,14 +121,6 @@ const handleEditBlog = async(event) => {
 
     const blogTitle = $("#blog-title").val();
     const blogContent = $("#blog-content").val();
-
-    if (!blogTitle) {
-        alert("Title cannot be empty");
-    }
-    if (!blogContent) {
-        alert("Content cannot be empty");
-    }
-
     const id = event.target.getAttribute("data");
 
     const response = await fetch(`/api/blog/${id}`, {
@@ -138,12 +130,14 @@ const handleEditBlog = async(event) => {
         },
         body: JSON.stringify({ blogTitle, blogContent }),
     });
+
     const data = await response.json();
 
-    console.log(data);
-
-    if (data.success) {
+    if (data.status === 422) {
+        alert("Blog title or content cannot be empty");
+    } else if (data.success) {
         window.location.replace("/dashboard");
+        alert(`Successfully updated "${blogTitle}"`);
     }
 };
 
