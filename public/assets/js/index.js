@@ -172,26 +172,22 @@ const handleCreateComment = async(event) => {
     const comment = $("#comment-text").val();
     const blogId = event.target.getAttribute("data");
 
-    if (!comment) {
-        alert("Oops!! Cannot post an empty comment!");
-    } else {
-        const response = await fetch(`/api/blog/${blogId}/comment`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                comment,
-            }),
-        });
+    const response = await fetch(`/api/blog/${blogId}/comment`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            comment,
+        }),
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (data.success) {
-            window.location.replace(`/blogs/${blogId}`);
-        }
-
-        console.log(data);
+    if (data.status === 422) {
+        alert("Cannot post an empty comment");
+    } else if (data.success) {
+        window.location.replace(`/blogs/${blogId}`);
     }
 };
 

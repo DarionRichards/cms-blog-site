@@ -40,6 +40,7 @@ const createComment = async(req, res) => {
         if (!comment) {
             return res.status(422).json({
                 success: false,
+                status: 422,
                 error: "Comment was not a valid string",
             });
         }
