@@ -12,6 +12,8 @@ const dbOptions = {
     logging: false,
 };
 
-const sequelize = new Sequelize(dbName, dbUser, dbPassword, dbOptions);
+const sequelize = process.env.JAWSDB_URL ?
+    new Sequelize(process.env.JAWSDB_URL) :
+    new Sequelize(dbName, dbUser, dbPassword, dbOptions);
 
 module.exports = sequelize;
