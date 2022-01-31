@@ -5,7 +5,7 @@ const path = require("path");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const sequelize = require("./config/connection");
+const connection = require("./config/connection");
 const routes = require("./routes");
 
 const PORT = process.env.PORT || 4000;
@@ -18,7 +18,7 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: false,
     store: new SequelizeStore({
-        db: sequelize,
+        db: connection,
     }),
 };
 
@@ -36,7 +36,7 @@ app.use(routes);
 
 const init = async() => {
     try {
-        await sequelize.sync({ force: false });
+        await connection.sync({ force: false });
 
         app.listen(PORT, () =>
             console.log(`🚀🚀 Server running on http://localhost:${PORT} 🚀🚀`)
