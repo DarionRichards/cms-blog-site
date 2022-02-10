@@ -1,0 +1,19 @@
+<header>
+	{{#if loggedIn}}
+  	{{> privateNavbar}}
+  	{{else}}
+  	{{> publicNavbar}}
+ 	{{/if}}
+</header>
+
+<main>
+	<section class="content-wrapper">
+		{{#if blog}}
+		{{#each blog}}
+		{{> blogCard}}
+		{{/each}}
+		{{else}}
+		<section class="no-blogs-hero">No blogs posted</section>
+		{{/if}}
+	</section>
+</main>

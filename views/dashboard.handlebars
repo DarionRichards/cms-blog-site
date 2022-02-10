@@ -1,0 +1,21 @@
+<header>
+	{{> privateNavbar}}
+</header>
+
+<main>
+	<section class="dashboard-hero">
+		<h1>My Dashboard</h1>
+	</section>
+	<section class="create-button-section">
+		<a href="/create-blog" class="edit-button" style="padding: 1rem;">Create A New Blog</a>
+	</section>
+	<section class="content-wrapper">
+		{{#if userCreatedBlogs}}
+		{{#each userCreatedBlogs}}
+		{{> blogCardDashboard}}
+		{{/each}}
+		{{else}}
+		<section class="dashboard-hero">You have no blogs</section>
+		{{/if}}
+	</section>
+</main>

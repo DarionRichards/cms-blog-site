@@ -1,0 +1,27 @@
+<header>
+	{{#if loggedIn}}
+  	{{> privateNavbar}}
+  	{{else}}
+  	{{> publicNavbar}}
+ 	{{/if}}
+</header>
+
+<main>
+	<section class="content-wrapper blog-comments-wrapper">
+		{{> blogCardById}}
+		<section class="comment-section">
+			<h1>Comments</h1>
+			{{#if comments}}
+			{{#each comments}}
+			{{> comments}}
+			{{/each}}
+			{{else}}
+			<section class="comment">No comments</section>
+			{{/if}}
+		</section>
+		{{#if loggedIn}}
+		{{> addNewComment}}
+		{{else}}
+		{{/if}}
+	</section>
+</main>
